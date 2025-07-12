@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: todos-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: todos_db
+      POSTGRES_USER: todos_user
+      POSTGRES_PASSWORD: todos_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    networks:
+      - todos-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U todos_user -d todos_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: todos-api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: todos_db
+      DB_USER: todos_user
+      DB_PASSWORD: todos_password
+      DATABASE_URL: postgresql://todos_user:todos_password@postgres:5432/todos_db
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - todos-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 120s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  todos-network:
+    driver: bridge

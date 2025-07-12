@@ -1,6 +1,6 @@
 import { useTodosSDK } from '@/features/todos/services';
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
-import { Todo, CreateTodoInput } from '@todos/shared';
+import { Todo, CreateTodoInput } from '@shared/lib';
 import { useState } from 'react';
 
 /* export const useTodosPaginated = () => {

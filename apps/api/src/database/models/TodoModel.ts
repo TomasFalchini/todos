@@ -1,4 +1,4 @@
-import { Todo } from '@todos/shared';
+  import { Todo } from '@shared/lib';
 
 //Ver si aca va algo mas
 

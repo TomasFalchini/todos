@@ -1,31 +1,27 @@
+
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "noImplicitAny": false,
+    "target": "es2022",
+    "lib": ["es2022", "dom", "dom.iterable"],
     "allowJs": true,
-    "noErrorTruncation": true,
-
-    /* Bundler mode */
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "declaration": true,
-    "composite": true,
-    "sourceMap": true,
-    "declarationMap": true
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["packages/shared/src/*"],
+      "@api/*": ["apps/api/src/*"],
+      "@web/*": ["apps/web/src/*"]
+    }
   },
+  "include": ["packages/shared/src/**/*", "apps/api/src/**/*", "apps/web/src/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
 }

@@ -1,4 +1,4 @@
-import { CreateTodoInput, UpdateTodoInput } from '@todos/shared';
+import { CreateTodoInput, UpdateTodoInput } from '@shared/lib';
 import { CursorPagination, TodoDbModel } from '../models';
 
 export interface ITodoRepository {

@@ -6,7 +6,7 @@ import {
   CreateTodoSchema,
   GetAllTodosSchema,
   GetTodoByIdSchema,
-} from '@todos/shared';
+} from '@shared/lib';
 
 //TODO: Sacar a Shared
 

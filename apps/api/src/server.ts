@@ -117,30 +117,46 @@ export class Server {
     this.isShuttingDown = true;
     console.log('🔄 Iniciando proceso de shutdown...');
 
+
+    const shutdownTimeout = setTimeout(() => {
+      console.log('⏱️ Timeout de shutdown alcanzado, forzando salida...');
+      process.exit(1);
+    }, 8000);
+
     try {
-      console.log('🌐 Cerrando servidor HTTP...');
+      const shutdownPromises: Promise<void>[] = [];
+  
 
       if (this.dbConnection) {
         console.log('📊 Cerrando conexión a base de datos...');
-        await this.dbConnection.disconnect();
+        shutdownPromises.push(
+          this.dbConnection.disconnect().catch(err => {
+            console.error('Error cerrando base de datos:', err);
+          })
+        );
       }
 
       if (this.httpServer) {
         console.log('🌐 Cerrando servidor HTTP...');
-        await this.httpServer.shutdown();
+        shutdownPromises.push(
+          this.httpServer.shutdown().catch(err => {
+            console.error('Error cerrando servidor HTTP:', err);
+          })
+        );
       }
-
+  
+     
+      await Promise.allSettled(shutdownPromises);
+  
       console.log('✅ Shutdown completado correctamente');
+      
+      clearTimeout(shutdownTimeout);
+      
+      process.exit(0);
     } catch (error) {
       console.error('❌ Error durante shutdown:', error);
-    } finally {
-      // Forzar salida después de un timeout
-      setTimeout(() => {
-        console.log('⏱️ Timeout de shutdown alcanzado, forzando salida...');
-        process.exit(1);
-      }, 10000); // 10 segundos de timeout
-
-      process.exit(0);
+      clearTimeout(shutdownTimeout);
+      process.exit(1);
     }
   }
 }

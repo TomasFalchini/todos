@@ -1,8 +1,7 @@
 import React from 'react';
 import { Row, Col, Typography, Empty, Card, Spin, Alert } from 'antd';
 import { StickyNote } from './StickyNote';
-import { useTheme } from '@/context/theme/ThemeContext';
-import { Todo } from '@todos/shared';
+import { Todo } from '@shared/lib'
 
 const { Title, Text } = Typography;
 

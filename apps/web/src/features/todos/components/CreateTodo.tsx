@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, Input, Select, Card, Space, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { CreateTodoInput, TodoPriority } from '@todos/shared';
+import { CreateTodoInput, TodoPriority } from '@shared/lib';
 import { useCreateTodoMutation } from '../hooks';
 import { useQueryClient } from '@tanstack/react-query';
-import { useTheme } from '@/context/theme/ThemeContext';
 
 const { TextArea } = Input;
 const { Option } = Select;

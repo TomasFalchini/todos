@@ -5,7 +5,7 @@ import {
   EmptyApiResponse,
   Todo,
   TodoApiResponse,
-} from '@todos/shared';
+} from '@shared/lib';
 import { uuidv4 } from 'zod/v4';
 
 const baseUrl = '/todos';

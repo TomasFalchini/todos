@@ -1,4 +1,4 @@
-import { CreateTodoInput, UpdateTodoInput } from '@todos/shared';
+import { CreateTodoInput, UpdateTodoInput } from '@shared/lib';
 import { CursorPagination, ITodoRepository, TodoDbModel } from '../../database';
 
 export interface ITodoService {
@@ -37,6 +37,7 @@ export class TodoService implements ITodoService {
       title: data.title.trim(),
       description: data.description?.trim(),
       priority: data.priority || 'medium',
+      date: data.date || new Date(),
     };
 
     return await this.todoRepository.create(todo);

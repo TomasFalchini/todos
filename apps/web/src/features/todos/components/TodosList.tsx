@@ -3,9 +3,8 @@ import { List, Spin, Alert, Typography, Empty, Card } from 'antd';
 import { useTodosPaginated } from '../hooks';
 import { TodoItem } from './TodoItem';
 import { StickyNotesGrid } from './StickyNotesGrid';
-import { useTheme } from '@/context/theme/ThemeContext';
 import { useView } from '@/context/view/ViewContext';
-import { Todo } from '@todos/shared';
+import { Todo } from '@shared/lib';
 
 const { Title, Text } = Typography;
 

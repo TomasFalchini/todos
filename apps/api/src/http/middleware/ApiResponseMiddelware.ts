@@ -1,6 +1,6 @@
 import { Express, Request, Response, NextFunction } from 'express';
 import { IMiddleware } from './IMiddleware';
-import { ApiResponse } from '@todos/shared';
+import { ApiResponse } from '@shared/lib';
 
 export class ApiResponseMiddleware implements IMiddleware {
   configure(app: Express): void {

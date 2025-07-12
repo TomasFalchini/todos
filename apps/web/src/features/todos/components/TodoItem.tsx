@@ -17,9 +17,8 @@ import {
   ExclamationCircleFilled,
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { Todo } from '@todos/shared';
+import { Todo } from '@shared/lib';
 import { useUpdateTodoMutation, useDeleteTodoMutation } from '../hooks';
-import { useTheme } from '@/context/theme/ThemeContext';
 import { useQueryClient } from '@tanstack/react-query';
 
 const { Text, Paragraph } = Typography;

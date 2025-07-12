@@ -32,10 +32,11 @@ export type Todo = z.infer<typeof TodoSchema>;
 
 export const GetAllTodosSchema = z.object({
   next_cursor: z.string().optional(),
-  limit: z.number().min(1).max(100),
+  limit: z.coerce.number().min(1).max(100),
 });
 
 export type GetAllTodosInput = z.infer<typeof GetAllTodosSchema>;
+
 
 export const GetTodoByIdSchema = z.object({
   id: z.string(),
@@ -62,14 +63,7 @@ export const UpdateTodoSchema = z.object({
 
 export type UpdateTodoInput = z.infer<typeof UpdateTodoSchema>;
 
-// Esquema para filtros de todos
-export const TodoFiltersSchema = z.object({
-  completed: z.boolean().optional(),
-  priority: TodoPriorityEnum.optional(),
-  search: z.string().optional(),
-});
 
-export type TodoFilters = z.infer<typeof TodoFiltersSchema>;
 
 // Esquemas de respuesta de API
 export const createApiResponseSchema = <T extends z.ZodTypeAny>(

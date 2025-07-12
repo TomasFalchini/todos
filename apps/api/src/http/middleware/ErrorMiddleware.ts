@@ -21,12 +21,13 @@ export class ErrorHandlingMiddleware implements IMiddleware {
         });
       }
 
-      // Error no manejado
+      let context = {error_message: err?.message}
+
       return res.status(500).json({
         success: false,
         message: 'Internal server error',
         code: 500,
-        context: undefined,
+        context,
       });
     });
   }

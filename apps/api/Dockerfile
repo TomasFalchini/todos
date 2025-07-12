@@ -15,7 +15,7 @@ COPY apps/api/src ./apps/api/src
 COPY apps/api/tsconfig.json ./apps/api/
 
 # Compilar todos los paquetes (primero shared, luego backend)
-RUN pnpm turbo run build --filter=@todos/shared
+RUN pnpm turbo run build --filter=@shared/lib
 RUN pnpm turbo run build --filter=@todos/backend
 
 # ========== PRODUCTION STAGE ==========

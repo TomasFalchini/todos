@@ -7,11 +7,10 @@ import {
   SunOutlined,
   MoonOutlined,
 } from '@ant-design/icons';
-import { useTheme } from '@/context/theme/ThemeContext';
 import { useView } from '@/context/view/ViewContext';
 import { useCreateTodoMutation } from '@/features/todos/hooks';
 import { useQueryClient } from '@tanstack/react-query';
-import { CreateTodoInput, TodoPriority } from '@todos/shared';
+import { CreateTodoInput, TodoPriority } from '@shared/lib';
 
 const { TextArea } = Input;
 const { Option } = Select;

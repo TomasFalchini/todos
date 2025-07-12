@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ITodoService } from '../services';
-import { CreateTodoInput, UpdateTodoInput } from '@todos/shared';
+import { CreateTodoInput, UpdateTodoInput } from '@shared/lib';
 
 export class TodoController {
   constructor(private readonly todoService: ITodoService) {}

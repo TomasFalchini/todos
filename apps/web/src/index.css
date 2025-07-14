@@ -1,106 +1,5 @@
 @import 'tailwindcss';
 
-@theme {
-  /* Colores primarios del tema */
-  --color-primary-50: #e6f4ff;
-  --color-primary-100: #bae0ff;
-  --color-primary-200: #91caff;
-  --color-primary-300: #69b1ff;
-  --color-primary-400: #4096ff;
-  --color-primary-500: #1890ff;
-  --color-primary-600: #0958d9;
-  --color-primary-700: #003eb3;
-  --color-primary-800: #002c8c;
-  --color-primary-900: #001d66;
-  --color-primary-950: #001529;
-
-  /* Colores secundarios (grises semánticos) */
-  --color-secondary-50: #fafafa;
-  --color-secondary-100: #f5f5f5;
-  --color-secondary-200: #e8e8e8;
-  --color-secondary-300: #d9d9d9;
-  --color-secondary-400: #bfbfbf;
-  --color-secondary-500: #8c8c8c;
-  --color-secondary-600: #595959;
-  --color-secondary-700: #434343;
-  --color-secondary-800: #262626;
-  --color-secondary-900: #1f1f1f;
-  --color-secondary-950: #141414;
-
-  /* Colores de fondo semánticos */
-  --color-background: #ffffff;
-  --color-foreground: #000000;
-
-  /* Modo oscuro */
-  --color-background-dark: #141414;
-  --color-foreground-dark: #ffffff;
-
-  /* Superficie y contenedores */
-  --color-surface: #ffffff;
-  --color-surface-dark: #1f1f1f;
-
-  /* Sidebar específico */
-  --color-sidebar: #ffffff;
-  --color-sidebar-dark: #001529;
-
-  /* Content area */
-  --color-content: #ffffff;
-  --color-content-dark: #141414;
-
-  /* Bordes */
-  --color-border: #f0f0f0;
-  --color-border-dark: #303030;
-
-  /* Bordes secundarios */
-  --color-border-secondary: #e8e8e8;
-  --color-border-secondary-dark: #262626;
-
-  /* Texto */
-  --color-text: #000000;
-  --color-text-dark: #ffffff;
-
-  --color-text-secondary: #595959;
-  --color-text-secondary-dark: #bfbfbf;
-
-  --color-text-muted: #8c8c8c;
-  --color-text-muted-dark: #8c8c8c;
-
-  /* Estados de hover */
-  --color-hover: #f5f5f5;
-  --color-hover-dark: #262626;
-
-  /* Estados de active */
-  --color-active: #e6f4ff;
-  --color-active-dark: #112545;
-}
-
-/* Configuración de color-scheme para detectar automáticamente el modo */
-:root {
-  color-scheme: light dark;
-}
-
-/* Estilos base */
-body {
-  margin: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-background);
-  color: var(--color-text);
-}
-
-body.dark {
-  background-color: var(--color-background-dark);
-  color: var(--color-text-dark);
-}
-
-code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -111,37 +10,21 @@ body,
   height: 100%;
 }
 
-/* Estilos para AntDesign - manteniendo compatibilidad */
-.ant-layout-header {
-  background: var(--color-sidebar);
+body {
+  background: #fefefe;
 }
 
-.ant-card {
+.ant-flex {
+  background: #fefefe;
+  padding: 16px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-color: var(--color-surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.ant-card-hoverable:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+.ant-layout {
+  background: #fefefe;
 }
 
-.ant-btn {
-  border-radius: 6px;
-}
-
-.ant-input {
-  border-radius: 6px;
-}
-
-.ant-select .ant-select-selector {
-  border-radius: 6px;
-}
-
-.ant-modal {
-  border-radius: 8px;
-}
-
-.ant-modal-content {
-  border-radius: 8px;
+.ant-checkbox-inner {
+  border-color: rgba(0, 0, 0, 0.411) !important;
 }

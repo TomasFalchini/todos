@@ -16,7 +16,6 @@ import { ITodoService, TodoService } from './services';
 import { TodoRoutes, RouteManager } from './routes';
 import 'express-async-errors';
 
-
 export interface HttpDeps {
   todoRepository: ITodoRepository;
 }

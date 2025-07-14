@@ -37,7 +37,6 @@ export const GetAllTodosSchema = z.object({
 
 export type GetAllTodosInput = z.infer<typeof GetAllTodosSchema>;
 
-
 export const GetTodoByIdSchema = z.object({
   id: z.string(),
 });
@@ -62,8 +61,6 @@ export const UpdateTodoSchema = z.object({
 });
 
 export type UpdateTodoInput = z.infer<typeof UpdateTodoSchema>;
-
-
 
 // Esquemas de respuesta de API
 export const createApiResponseSchema = <T extends z.ZodTypeAny>(
@@ -92,7 +89,7 @@ export const EmptyApiResponseSchema = createApiResponseSchema(z.undefined());
 export type EmptyApiResponse = z.infer<typeof EmptyApiResponseSchema>;
 
 export const ApiResponseSchema = createApiResponseSchema(z.any());
-export type ApiResponse<T = any> = z.infer<typeof ApiResponseSchema>;
+
 
 export const ApiErrorSchema = z.object({
   success: z.literal(false),

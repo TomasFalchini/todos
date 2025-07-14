@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { ViewContext, ViewType } from './ViewContext';
 
 interface ViewProviderProps {

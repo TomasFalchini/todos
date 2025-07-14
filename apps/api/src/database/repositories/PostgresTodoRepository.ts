@@ -65,7 +65,6 @@ export class PostgresTodoRepository implements ITodoRepository {
       timestampParam = decoded.timestamp;
       idParam = decoded.id;
     }
-    
 
     const query = `
     SELECT id, title, description, completed, priority, date, created_at, updated_at 

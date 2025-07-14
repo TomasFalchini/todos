@@ -2,8 +2,9 @@ import axios from 'axios';
 import { useNotification } from '@/hooks';
 
 export const initBackend = (errorHandler: (message?: string) => void) => {
+  //TODO: Cambiar a la URL del backend en un env
   const client = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3005',
     headers: {
       'Content-Type': 'application/json',
     },

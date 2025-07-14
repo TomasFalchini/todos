@@ -117,7 +117,6 @@ export class Server {
     this.isShuttingDown = true;
     console.log('🔄 Iniciando proceso de shutdown...');
 
-
     const shutdownTimeout = setTimeout(() => {
       console.log('⏱️ Timeout de shutdown alcanzado, forzando salida...');
       process.exit(1);
@@ -125,7 +124,6 @@ export class Server {
 
     try {
       const shutdownPromises: Promise<void>[] = [];
-  
 
       if (this.dbConnection) {
         console.log('📊 Cerrando conexión a base de datos...');
@@ -144,14 +142,13 @@ export class Server {
           })
         );
       }
-  
-     
+
       await Promise.allSettled(shutdownPromises);
-  
+
       console.log('✅ Shutdown completado correctamente');
-      
+
       clearTimeout(shutdownTimeout);
-      
+
       process.exit(0);
     } catch (error) {
       console.error('❌ Error durante shutdown:', error);

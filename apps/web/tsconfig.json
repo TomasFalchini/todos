@@ -21,12 +21,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@todos/shared": ["../../packages/shared/src"]
+      "@shared/lib": ["../../packages/shared/src"]
     }
   },
   "include": ["src"],
   "references": [
-    { "path": "./tsconfig.node.json" },
     { "path": "../../packages/shared" }
   ]
 } 

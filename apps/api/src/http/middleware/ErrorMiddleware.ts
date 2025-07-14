@@ -9,7 +9,6 @@ export class ErrorHandlingMiddleware implements IMiddleware {
     });
 
     app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-
       res.setHeader('Content-Type', 'application/json');
       if (err instanceof ApiError) {
         return res.status(err.statusCode).json({
@@ -21,7 +20,7 @@ export class ErrorHandlingMiddleware implements IMiddleware {
         });
       }
 
-      let context = {error_message: err?.message}
+      let context = { error_message: err?.message };
 
       return res.status(500).json({
         success: false,

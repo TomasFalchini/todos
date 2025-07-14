@@ -54,6 +54,11 @@ pnpm-lock.yaml
 # Build outputs
 packages/*/dist/
 packages/*/build/
+.turbo
+.turbo/*
+
+# ESLint
+.eslintcache
 
 # Test coverage
 coverage/

@@ -1,10 +1,12 @@
 import React from 'react';
-import { TodosList } from '@/features/todos/components/TodosList';
+import { TodosList } from '@/features/todos';
+import { Flex, Typography } from 'antd';
 
 export const TodosPage: React.FC = () => {
   return (
-    <div>
+    <Flex vertical gap={24}>
+      <Typography.Title level={2}>Mis Tareas</Typography.Title>
       <TodosList />
-    </div>
+    </Flex>
   );
 };

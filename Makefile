@@ -89,6 +89,12 @@ docker-down: ## Stop services with docker-compose
 docker-logs: ## Show docker-compose logs
 	docker-compose logs -f
 
+docker-down-clean: ## Stop all docker services and remove volumes
+	docker-compose down -v --remove-orphans
+
+db-up-and-migrate: ## Start db in docker and run migrations
+	docker-compose -f docker-compose.local.yaml up -d postgres
+
 # Utilities
 status: ## Show project status
 	@echo "📊 Project Status:"

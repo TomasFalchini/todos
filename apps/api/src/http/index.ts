@@ -45,6 +45,7 @@ export class HttpServer {
     this.initializeComponents();
     this.registerRoutes();
     this.setupErrorHandling();
+    
   }
 
   public async start(port: number): Promise<void> {
@@ -95,6 +96,8 @@ export class HttpServer {
       new TodoRoutes(this.todoController, this.validator)
     );
     this.routeManager.registerAll(this.app);
+
+    this.routeManager.addHealtCheckRoute(this.app);
   }
 
   private setupErrorHandling(): void {

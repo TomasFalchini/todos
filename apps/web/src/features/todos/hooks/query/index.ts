@@ -1,6 +1,6 @@
 import { useTodosSDK } from '@/features/todos/services';
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
-import { Todo, CreateTodoInput, UpdateTodo } from '@shared/lib';
+import { Todo, CreateTodoInput, UpdateTodoInput } from '@shared/lib';
 import { queryClient, useMessage } from '@/hooks';
 
 export const useTodosInfinitePaginated = () => {
@@ -44,7 +44,7 @@ export const useUpdateTodoMutation = () => {
   const notification = useMessage();
 
   return useMutation({
-    mutationFn: ({ body, id }: { body: UpdateTodo; id: string }) =>
+    mutationFn: ({ body, id }: { body: UpdateTodoInput; id: string }) =>
       updateTodo({ id, body }),
     onSuccess: (_, { id }) => {
       notification.success('Tarea actualizada correctamente');

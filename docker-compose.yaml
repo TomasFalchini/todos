@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   postgres:
@@ -13,7 +13,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+      - ./apps/api/src/database/migrations:/docker-entrypoint-initdb.d:ro
     networks:
       - todos-network
     healthcheck:
@@ -23,6 +23,20 @@ services:
       retries: 3
       start_period: 60s
 
+  migrations:
+    image: flyway/flyway:latest
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./apps/api/src/database/migrations:/flyway/sql
+    environment:
+      FLYWAY_URL: jdbc:postgresql://postgres:5432/todos_db
+      FLYWAY_USER: todos_user
+      FLYWAY_PASSWORD: todos_password
+    command: migrate
+    restart: "no"
+
   api:
     build:
       context: .
@@ -30,10 +44,10 @@ services:
     container_name: todos-api
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3005:3005"
     environment:
       NODE_ENV: production
-      PORT: 3000
+      PORT: 3005
       DB_HOST: postgres
       DB_PORT: 5432
       DB_NAME: todos_db
@@ -46,11 +60,25 @@ services:
     networks:
       - todos-network
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3005/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
       interval: 120s
       timeout: 10s
       retries: 3
       start_period: 40s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: todos-frontend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: production
+      VITE_API_URL: http://localhost:3005
+    networks:
+      - todos-network
 
 
 volumes:

@@ -18,7 +18,7 @@ export class ApiResponseMiddleware implements IMiddleware {
       if (body && body.success === false) {
         return originalJson.call(this, body);
       }
-      const responseBody: ApiResponse<any> = {
+      const responseBody: ApiResponse = {
         success: true,
         message: 'Success',
         code: res.statusCode,

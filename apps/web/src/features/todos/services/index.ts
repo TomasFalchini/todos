@@ -1,7 +1,7 @@
 import { useBackend } from '@/services';
 import { AxiosInstance } from 'axios';
 import {
-  CreateTodo,
+  CreateTodoInput,
   EmptyApiResponse,
   Todo,
   TodoApiResponse,
@@ -12,7 +12,7 @@ const baseUrl = '/todos';
 
 export const todosApiSdk = (apiConsumer: AxiosInstance) => {
   return {
-    createNewTodo: async ({ body }: { body: CreateTodo }): Promise<void> => {
+    createNewTodo: async ({ body }: { body: CreateTodoInput }): Promise<void> => {
       await apiConsumer.post<EmptyApiResponse>(`${baseUrl}`, {
         ...body,
       });

@@ -90,6 +90,7 @@ export type EmptyApiResponse = z.infer<typeof EmptyApiResponseSchema>;
 
 export const ApiResponseSchema = createApiResponseSchema(z.any());
 
+export type ApiResponse = z.infer<typeof ApiResponseSchema>;
 
 export const ApiErrorSchema = z.object({
   success: z.literal(false),
